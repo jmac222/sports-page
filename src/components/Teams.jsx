@@ -47,7 +47,9 @@ class Teams extends Component {
       })
       .map((team) => {
         return (
-          <div className="team">
+          <div className="team" onClick={(e) => {
+            window.open(team.team.links[0].href)
+          }}>
             <img src={team.team.logos[0].href} width="100px" height="100px" />
             <div className="content">
               <h2>{team.team.name}</h2>

@@ -1,17 +1,24 @@
 import React from "react";
 import { Component } from "react";
 import axios from "axios";
+import { linkContext } from "../util/context";
 
 class Teams extends Component {
+  static contextType = linkContext;
   constructor(props) {
     super(props);
     this.state = {
       teams: [],
+      search: "",
+      comp: "",
     };
   }
 
-  async componentDidMount() {
-    let url = `http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams?limit=40`;
+  async componentDidUpdate() {
+    const { link, setLink } = this.context;
+
+    console.log(link);
+    let url = `http://site.api.espn.com/apis/site/v2/sports/${link}/teams?limit=100`;
     let result = null;
 
     try {
@@ -27,24 +34,48 @@ class Teams extends Component {
   }
 
   render() {
+    const { link, setLink, leagueName } = this.context;
+
+    console.log(leagueName);
     console.log(this.state.teams);
-    let mapArray = this.state.teams.map((team) => {
-      return (
-        <div className="team">
-          <img src={team.team.logos[0].href} />
-          <h1>{team.team.name}</h1>
-          <p>{team.team.record.items[0].summary}</p>
-        </div>
-      );
-    });
+    let mapArray = this.state.teams
+      .filter((team) => {
+        return Object.values(team.team)
+          .join("")
+          .toLowerCase()
+          .includes(this.state.search.toLowerCase());
+      })
+      .map((team) => {
+        return (
+          <div className="team">
+            <img src={team.team.logos[0].href} width="100px" height="100px" />
+            <div className="content">
+              <h1>{team.team.name}</h1>
+              <p>{team.team.record.items[0].summary}</p>
+            </div>
+          </div>
+        );
+      });
+      if (mapArray == ''){
+        return <h1>Welcome to AllSports</h1>
+      }else {
 
     return (
       <div>
-        <h1>NFL Teams</h1>
+        <h1>{leagueName} Teams</h1>
+        <input
+          type="text"
+          placeholder="Search for teams"
+          onChange={(e) => {
+            this.setState({ search: e.target.value });
+          }}
+        />
         <div className="teams">{mapArray}</div>
       </div>
     );
+        }
   }
 }
 
+Teams.contextType = linkContext;
 export default Teams;

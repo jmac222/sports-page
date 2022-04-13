@@ -1,11 +1,19 @@
+import { useState } from "react";
 import Teams from "./components/Teams";
+import Navbar from "./layout/Navbar";
+import './styles/main.css'
 
-
+import { linkContext } from "./util/context";
 function App() {
+  const [link, setLink] = useState('')
+  const [leagueName, setLeagueName] = useState('')
   return (
-    <div className="App">
+    
+    <linkContext.Provider value = {{link, setLink, leagueName, setLeagueName}}>
+
+      <Navbar />
       <Teams />
-    </div>
+    </linkContext.Provider>
   );
 }
 

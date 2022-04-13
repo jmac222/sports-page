@@ -1,0 +1,29 @@
+html, body{
+    background-color: black;
+}
+
+h1{
+    color: blue;
+}
+
+.team{
+    display: flex;
+    background-color: whitesmoke;
+    width: 20vw;
+    margin: 10px;
+    border-radius: 10px;
+    
+}
+
+.teams{
+    display: flex;
+    flex-wrap: wrap;
+    width: 75vw;
+    justify-content: center;
+    margin: auto;
+}
+
+.content{
+    margin-left: 10px;
+}
+

@@ -1,0 +1,22 @@
+.nav-bar {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  border-radius: 10px;
+}
+
+button {
+  width: 20vw;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  button {
+    width: 22vw;
+  }
+}/*# sourceMappingURL=nav.css.map */

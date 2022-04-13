@@ -36,7 +36,7 @@ class Teams extends Component {
   render() {
     const { link, setLink, leagueName } = this.context;
 
-    console.log(leagueName);
+    
     console.log(this.state.teams);
     let mapArray = this.state.teams
       .filter((team) => {
@@ -50,30 +50,34 @@ class Teams extends Component {
           <div className="team">
             <img src={team.team.logos[0].href} width="100px" height="100px" />
             <div className="content">
-              <h1>{team.team.name}</h1>
+              <h2>{team.team.name}</h2>
               <p>{team.team.record.items[0].summary}</p>
             </div>
           </div>
         );
       });
-      if (mapArray == ''){
-        return <h1>Welcome to AllSports</h1>
-      }else {
+    if (mapArray == '') {
+     
+      return <h1>Welcome to AllSports</h1>
+    } else {
 
-    return (
-      <div>
-        <h1>{leagueName} Teams</h1>
-        <input
-          type="text"
-          placeholder="Search for teams"
-          onChange={(e) => {
-            this.setState({ search: e.target.value });
-          }}
-        />
-        <div className="teams">{mapArray}</div>
-      </div>
-    );
-        }
+      return (
+        <div>
+          <h1>{leagueName} Teams</h1>
+          <div className="inp">
+            <input
+              type="text"
+              placeholder="Search for teams"
+              className="search"
+              onChange={(e) => {
+                this.setState({ search: e.target.value });
+              }}
+            />
+          </div>
+          <div className="teams">{mapArray}</div>
+        </div>
+      );
+    }
   }
 }
 

@@ -10,7 +10,7 @@ function App() {
   return (
     
     <linkContext.Provider value = {{link, setLink, leagueName, setLeagueName}}>
-
+      <h1>AllSports API</h1>
       <Navbar />
       <Teams />
     </linkContext.Provider>

@@ -1,27 +1,82 @@
+*,
+*::after,
+*::before {
+  overflow-x: hidden;
+}
+
 html, body {
   background-color: #20232a;
 }
 
 h1 {
-  color: blue;
+  color: rgb(137, 207, 240);
 }
 
 .team {
   display: flex;
   background-color: whitesmoke;
-  width: 20vw;
+  width: 25vw;
   margin: 10px;
   border-radius: 10px;
+  transition: 0.3s ease-in-out all;
+}
+
+.team:hover {
+  width: 26vw;
 }
 
 .teams {
   display: flex;
   flex-wrap: wrap;
-  width: 75vw;
+  width: 85vw;
   justify-content: center;
   margin: auto;
 }
 
 .content {
   margin-left: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.inp {
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  width: 20vw;
+  height: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .teams {
+    width: 100vw;
+  }
+
+  .team {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    justify-content: space-between;
+  }
+
+  .team:hover {
+    width: 40vw;
+  }
+
+  .search {
+    width: 100vw;
+    margin-bottom: 10px;
+  }
+
+  .inp {
+    display: flex;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto;
+  }
 }/*# sourceMappingURL=team.css.map */

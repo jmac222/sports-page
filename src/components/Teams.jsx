@@ -18,7 +18,7 @@ class Teams extends Component {
     const { link, setLink } = this.context;
 
     console.log(link);
-    let url = `http://site.api.espn.com/apis/site/v2/sports/${link}/teams?limit=100`;
+    let url = `https://site.api.espn.com/apis/site/v2/sports/${link}/teams?limit=100`;
     let result = null;
 
     try {
